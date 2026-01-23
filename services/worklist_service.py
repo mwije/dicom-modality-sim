@@ -106,7 +106,7 @@ class WorklistService:
             server_ae_title=server_ae_title
         )
 
-        if not result.ok():
+        if result.ok is not True:
             print(result.explain("MWL query"))
             return []
 

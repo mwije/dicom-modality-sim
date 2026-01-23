@@ -59,15 +59,16 @@ Query Worklist → Select Patient → Acquire Image → Send to PACS → Report 
 ## Quick Start
 
 ```bash
-# Clone and setup
+: Clone and setup
 git clone https://github.com/mwije/dicom-modality-sim.git
 cd dicom-modality-sim
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
-# Run
+: Run
 python main.py
-
+```
+```bash
 # First-time configuration
 C → Configure PACS endpoints (host, port, AE titles)
 E → Verify connectivity (C-ECHO)

@@ -70,7 +70,20 @@ class ModalitySimulatorCLI:
                 self.config.display()
                 self.configuration_menu()
             elif choice in ['E', '0']:
-                self.verification_svc.verify_connection()
+                self.verification_svc.verify_connection(
+                    server_host=self.config.pacs_mwl_host,
+                    server_port=self.config.pacs_mwl_port,
+                    server_ae_title=self.config.pacs_mwl_ae_title,
+                    client_ae_title=self.config.ae_title
+                )
+
+                if (self.config.pacs_mwl_ae_title != self.config.pacs_store_ae_title):
+                    self.verification_svc.verify_connection(
+                        server_host=self.config.pacs_store_host,
+                        server_port=self.config.pacs_store_port,
+                        server_ae_title=self.config.pacs_store_ae_title,
+                        client_ae_title=self.config.ae_title
+                    )
             elif choice == 'P':
                 self.profile_management_menu()
             elif choice == 'Q':

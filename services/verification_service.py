@@ -21,8 +21,8 @@ class VerificationService:
             server_ae_title=server_ae_title,
             )
 
-        if not result.ok:
-            print("✗ TCP unreachable")
+        if result.ok is not True:
+            print(f"✗ TCP unreachable {server_host}:{server_port}")
 
             return False
         
@@ -30,8 +30,8 @@ class VerificationService:
         result.assoc.release()
 
         if status and status.Status == 0x0000:
-            print("✓ C-ECHO successful")
+            print(f"✓ C-ECHO successful {server_ae_title} @ {server_host}:{server_port}")
             return True
 
-        print(f"✗ C-ECHO failed: {status.Status:#06x}")
+        print(f"✗ C-ECHO failed: {server_ae_title} @ {server_host}:{server_port}\n{status.Status:#06x}")
         return False

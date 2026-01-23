@@ -192,7 +192,7 @@ class MPPSService:
             server_ae_title=server_ae_title,
         )
 
-        if not assoc.ok():
+        if result.ok is not True:
             print(assoc.explain("MPPS"))
             return False
 
@@ -227,7 +227,7 @@ class MPPSService:
             server_ae_title=server_ae_title,
         )
 
-        if not assoc.ok():
+        if result.ok is not True:
             print(assoc.explain("MPPS"))
             return False
 
