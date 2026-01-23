@@ -10,8 +10,9 @@ Simulates the complete DICOM communication pattern of imaging modalities—enabl
 
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/mwije/dicom-modality-sim/graphs/commit-activity)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-🟢 Actively maintained
 🧪 Used in real-world PACS integration testing  
 📦 Stable for non-production use
 
@@ -241,7 +242,7 @@ Please open an issue before significant changes to discuss approach.
 
 ## License
 
-MIT License - See [LICENSE](LICENSE)
+MIT License - See [LICENSE](LICENSE.md)
 
 This project is open source to benefit the healthcare IT community. Commercial use permitted under MIT terms.
 
