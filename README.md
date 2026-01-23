@@ -172,7 +172,6 @@ Q - Exit
 - **pynetdicom** - DICOM network protocol implementation
 - **pydicom** - DICOM file format handling
 - **opencv-python** - Image capture (optional for webcam)
-- **numpy, pillow** - Image processing
 
 ---
 

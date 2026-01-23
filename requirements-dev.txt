@@ -1,0 +1,5 @@
+numpy==2.4.1
+opencv-python==4.13.0.90
+pydicom==3.0.1
+pynetdicom==3.0.4
+python-dotenv==1.2.1
