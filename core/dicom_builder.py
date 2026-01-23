@@ -37,18 +37,20 @@ class DicomBuilder:
     
     def create_dicom_from_image(self, image, mwl_item, fulfill_order):
         """Create DICOM file from image with metadata from MWL item"""
+
         # Determine SOP Class based on modality
         sps = mwl_item.ScheduledProcedureStepSequence[0] if hasattr(mwl_item, 'ScheduledProcedureStepSequence') else Dataset()
         modality = getattr(sps, 'Modality', self.config.modality_type)
-        if modality == '*':
-            modality = 'CT'
         
-        sop_class = MODALITY_SOP_CLASS.get(modality, CTImageStorage)
+        if modality == '*':
+            modality = 'SC'
+        
+        sop_class = MODALITY_SOP_CLASS.get(modality, MODALITY_SOP_CLASS.get(modality))
         
         file_meta = Dataset()
         file_meta.MediaStorageSOPClassUID = sop_class
         file_meta.MediaStorageSOPInstanceUID = generate_uid()
-        file_meta.TransferSyntaxUID = TRANSFER_SYNTAX_OPTIONS(self.config.transfer_syntax or ExplicitVRLittleEndian)
+        file_meta.TransferSyntaxUID = TRANSFER_SYNTAX_OPTIONS.get(self.config.transfer_syntax or ExplicitVRLittleEndian)
         file_meta.ImplementationClassUID = generate_uid()
         
         ds = FileDataset(None, {}, file_meta=file_meta, preamble=b"\0" * 128)
@@ -106,18 +108,42 @@ class DicomBuilder:
         ds.SeriesNumber = 1
         ds.InstanceNumber = 1
         
-        # Image data
-        ds.SamplesPerPixel = 1
-        ds.PhotometricInterpretation = "MONOCHROME2"
-        ds.Rows, ds.Columns = image.shape
-        ds.BitsAllocated = 16
-        ds.BitsStored = 16
-        ds.HighBit = 15
-        ds.PixelRepresentation = 0
+        # Determine if image is color or grayscale
+        is_color = len(image.shape) == 3
         
-        # Convert 8-bit to 16-bit
-        img_16 = image.astype(np.uint16) * 256
-        ds.PixelData = img_16.tobytes()
+        # Image data - handle color vs grayscale
+        if is_color:
+            # Color image (RGB)
+            ds.SamplesPerPixel = 3
+            ds.PhotometricInterpretation = "RGB"
+            ds.PlanarConfiguration = 0 
+            height, width, channels = image.shape
+            ds.Rows = height
+            ds.Columns = width
+            ds.BitsAllocated = 8
+            ds.BitsStored = 8
+            ds.HighBit = 7
+            ds.PixelRepresentation = 0
+            
+            # Store as 8-bit RGB
+            ds.PixelData = image.tobytes()
+            print(f"  → Color image: {width}x{height}x{channels}, RGB")
+        else:
+            # Grayscale image
+            ds.SamplesPerPixel = 1
+            ds.PhotometricInterpretation = "MONOCHROME2"
+            height, width = image.shape
+            ds.Rows = height
+            ds.Columns = width
+            ds.BitsAllocated = 16
+            ds.BitsStored = 16
+            ds.HighBit = 15
+            ds.PixelRepresentation = 0
+            
+            # Convert 8-bit to 16-bit
+            img_16 = image.astype(np.uint16) * 256
+            ds.PixelData = img_16.tobytes()
+            print(f"  → Grayscale image: {width}x{height}, 16-bit")
         
         return ds
     

@@ -33,7 +33,7 @@ class StorageService:
             server_ae_title=server_ae_title,
         )
 
-        if result.ok is not True:
+        if result.ok() is not True:
             print(result.explain("C-STORE"))
             return False
 

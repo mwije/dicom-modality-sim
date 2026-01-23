@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-DICOM Modality Emulator - for RIS/PACS Workflow Testing
+DICOM Modality Simulator - for RIS/PACS Workflow Testing
 """
 
 import sys
@@ -14,7 +14,7 @@ def create_example_env():
     if env_path.exists():
         return
     
-    example_content = """# DICOM Modality Emulator Configuration
+    example_content = """# DICOM Modality Simulator Configuration
 
 # PACS Connection
 PACS_STORE_HOST=127.0.0.1
@@ -41,6 +41,7 @@ LOCAL_DIR=./dicom_output
 
 # Image Settings
 ACQUISITION_SOURCE=ask
+COLOR_ACQUISITION=false
 IMAGE_WIDTH=512
 IMAGE_HEIGHT=512
 

@@ -43,6 +43,7 @@ class ModalityConfig:
         
         # Acquisition source
         self.acquisition_source = os.getenv('ACQUISITION_SOURCE', 'webcam')  # webcam, file, default
+        self.acquisition_colors = os.getenv('COLOR_ACQUISITION', False)  # color or grayscale
     
     def display(self):
         """Display current configuration"""
@@ -64,6 +65,7 @@ class ModalityConfig:
         print(f"Filter by AE:            {self.filter_by_ae}")
         
         print(f"Acquisition Source:       {self.acquisition_source}")
+        print(f"Color Acquisition:        {self.acquisition_colors}")
         print(f"Image Size:             {self.image_width}x{self.image_height}")
         print(f"Save Local:              {self.save_local}")
     
@@ -75,7 +77,7 @@ class ModalityConfig:
     
     def get_config(self):
         return [
-            "# DICOM Modality Emulator Configuration\n",
+            "# DICOM Modality Simulator Configuration\n",
             "\n# PACS Connection\n",
             f"PACS_STORE_HOST={self.pacs_store_host}\n",
             f"PACS_MWL_HOST={self.pacs_mwl_host}\n",
@@ -101,6 +103,7 @@ class ModalityConfig:
             f"\n",
             "\n# Image Settings\n",
             f"ACQUISITION_SOURCE={self.acquisition_source}\n",
+            f"COLOR_ACQUISITION={self.acquisition_colors}\n",
             f"IMAGE_WIDTH={self.image_width}\n",
             f"IMAGE_HEIGHT={self.image_height}\n",
             f"\n",

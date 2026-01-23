@@ -4,7 +4,7 @@ def show_main_menu(selected_item=None, selection_details=None):
     """Display main menu"""
     
     print("\n" + "=" * 50)
-    print("DICOM Modality Emulator".center(50))
+    print("DICOM Modality Simulator".center(50))
     print("=" * 50)
     if selection_details:
         print(f"Selected: {selection_details}".center(50))

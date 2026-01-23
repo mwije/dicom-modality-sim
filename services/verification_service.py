@@ -21,7 +21,7 @@ class VerificationService:
             server_ae_title=server_ae_title,
             )
 
-        if result.ok is not True:
+        if result.ok() is not True:
             print(f"✗ TCP unreachable {server_host}:{server_port}")
 
             return False

@@ -314,7 +314,7 @@ class ModalitySimulatorCLI:
                 self.config.pacs_store_ae_title = input(f"PACS AE Title [{self.config.pacs_store_ae_title}]: ").strip() or self.config.pacs_store_ae_title
 
             elif choice == '2':
-                self.config.pacs_mwl_host = input(f"PACS Host [{self.config.pacs_store_host}]: ").strip() or self.config.pacs_mwl_host
+                self.config.pacs_mwl_host = input(f"PACS Host [{self.config.pacs_mwl_host}]: ").strip() or self.config.pacs_mwl_host
                 port = input(f"Store Port [{self.config.pacs_mwl_port}]: ").strip()
                 if port:
                     self.config.pacs_mwl_port = int(port)
@@ -350,6 +350,9 @@ class ModalitySimulatorCLI:
                     self.config.acquisition_source = src
                 else:
                     print("Invalid source")
+                color = input(f"Enable color (yes/no) [{self.config.acquisition_colors}]: ").strip().lower()
+                if color:
+                    self.config.acquisition_colors = color in ['yes', 'y', 'true']
 
                 print("\nAcquisition Image Dimensions (in pixels)")
                 w = input(f"Image Width [{self.config.image_width}]: ").strip()
