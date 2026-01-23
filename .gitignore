@@ -1,0 +1,10 @@
+__pycache__/
+dicom_output/
+.profiles/
+venv/
+.env
+*.bak
+*.pyd
+*.pyo
+*.log
+*.dcm
