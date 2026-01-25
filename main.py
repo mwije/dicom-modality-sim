@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+# Copyright (c) 2026 Malinda Wijeratne
+# SPDX-License-Identifier: MIT
+
 """
 DICOM Modality Simulator - for RIS/PACS Workflow Testing
 """

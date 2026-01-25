@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Malinda Wijeratne
+# SPDX-License-Identifier: MIT
+
 """Menu display and navigation utilities"""
 
 def show_main_menu(selected_item=None, selection_details=None):

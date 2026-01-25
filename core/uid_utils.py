@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Malinda Wijeratne
+# SPDX-License-Identifier: MIT
+
 """DICOM UID utilities and sanitization"""
 from pydicom.uid import generate_uid
 

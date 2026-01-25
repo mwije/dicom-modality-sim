@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Malinda Wijeratne
+# SPDX-License-Identifier: MIT
 
 from pydicom.dataset import Dataset
 from pynetdicom import AE

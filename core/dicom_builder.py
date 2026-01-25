@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Malinda Wijeratne
+# SPDX-License-Identifier: MIT
+
 """DICOM dataset construction"""
 from pydicom.dataset import Dataset, FileDataset
 from pydicom.uid import generate_uid, ExplicitVRLittleEndian, ImplicitVRLittleEndian, CTImageStorage, MRImageStorage, \
