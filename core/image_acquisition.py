@@ -64,7 +64,7 @@ class ImageAcquisitionService:
             
             if key == 32:  # SPACE
                 if color_mode:
-                    image = frame_resized.copy(frame_resized, cv2.COLOR_BGR2RGB)
+                    image = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2RGB)
                     print("✓ Color image captured from webcam")
                 else:
                     image = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2GRAY)
