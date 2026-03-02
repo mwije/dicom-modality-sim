@@ -10,7 +10,6 @@ from pydicom.uid import generate_uid, ExplicitVRLittleEndian, ImplicitVRLittleEn
     SecondaryCaptureImageStorage
 import numpy as np
 from datetime import datetime
-from .uid_utils import sanitize_uid
 
 # Modality type to SOP Class UID mapping
 MODALITY_SOP_CLASS = {
@@ -48,7 +47,7 @@ class DicomBuilder:
         if modality == '*':
             modality = 'SC'
         
-        sop_class = MODALITY_SOP_CLASS.get(modality, MODALITY_SOP_CLASS.get(modality))
+        sop_class = MODALITY_SOP_CLASS.get(modality, SecondaryCaptureImageStorage)
         
         file_meta = Dataset()
         file_meta.MediaStorageSOPClassUID = sop_class
