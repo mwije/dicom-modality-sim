@@ -170,7 +170,7 @@ class ModalitySimulatorCLI:
                 mwl_item=self.selected_item,
                 server_host=self.config.pacs_mwl_host,
                 server_port=self.config.pacs_mwl_port,
-                client_ae_title=self.ae_title,
+                client_ae_title=self.config.ae_title,
                 server_ae_title=self.config.pacs_mwl_ae_title
                 )
 
@@ -208,7 +208,7 @@ class ModalitySimulatorCLI:
                     dicom_instance=ds,
                     server_host=self.config.pacs_mwl_host,
                     server_port=self.config.pacs_mwl_port,
-                    client_ae_title=self.ae_title,
+                    client_ae_title=self.config.ae_title,
                     server_ae_title=self.config.pacs_mwl_ae_title
                 )
         else:
@@ -220,7 +220,7 @@ class ModalitySimulatorCLI:
                     dicom_instance=ds,
                     server_host=self.config.pacs_mwl_host,
                     server_port=self.config.pacs_mwl_port,
-                    client_ae_title=self.ae_title,
+                    client_ae_title=self.config.ae_title,
                     server_ae_title=self.config.pacs_mwl_ae_title,
                     reason='Acquisition failed'
                     )

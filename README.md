@@ -18,15 +18,14 @@ Simulates the complete DICOM communication pattern of imaging modalities—enabl
 
 ---
 
-## Why This Exists
+## Why This Project Exists
 
-Testing PACS integrations requires either disrupting live clinical systems or coordinating limited access to expensive imaging equipment. This creates bottlenecks during:
-- PACS upgrades and migrations
-- New modality integrations
-- RIS/PACS workflow development
-- Vendor interoperability validation
+Testing radiology workflows often requires access to real imaging modalities and clinical PACS/RIS systems. This creates barriers for developers, informaticians, and integration teams, and can disrupt clinical operations.
 
-This tool simulates the DICOM communication patterns of imaging modalities, enabling integration testing in controlled test environments without equipment access.
+This project provides a lightweight DICOM Modality Simulator to:
+- Validate PACS and RIS integrations without physical scanners
+- Test Modality Worklist (MWL), MPPS, and image transfer workflows
+- Support development, QA, and training in clinical environments
 
 ---
 

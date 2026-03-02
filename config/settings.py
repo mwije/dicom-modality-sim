@@ -33,10 +33,7 @@ class ModalityConfig:
         self.filter_by_ae = os.getenv('FILTER_BY_AE', 'false').lower() == 'true'
         self.verify_connection = os.getenv('VERIFY_CONNECTION', 'true').lower() == 'true'
         self.perform_mpps = os.getenv('PERFORM_MPPS', 'true').lower() == 'true'
-        
-        # MPPS
-        self.current_mpps_uid = None
-        self.mpps_enabled = False
+        self.mpps_enabled = self.perform_mpps
 
         # Image settings
         self.image_width = int(os.getenv('IMAGE_WIDTH', '512'))
